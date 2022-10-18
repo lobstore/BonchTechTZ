@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        #app {
+            position: relative;
+            width: 250px;
+            height: 500px;
+            margin: 20px auto;
+            box-shadow: 10px 10px 20px 10px rgba(0,0,0,0.5);
+            background-color: #C8A86D;
+
+        }
+
+        #app h2 {
+            text-align: center;
+            line-height: 50px;
+        }
+
+        #app input {
+            margin-left: 10px;
+            width: 200px;
+            height: 30px;
+
+        }
+
+        #app li {
+            width: 230px;
+            height: auto;
+            line-height: 40px;
+            margin: 5px auto 0px;
+            padding: 5px;
+            list-style: none;
+            background-color: #fff;
+            color: #666;
+           word-break: break-all;
+        }
+
+        #app li .remove {
+            width: 25px;
+            height: 25px;
+            float: right;
+            text-align: center;
+            cursor: pointer;
+            background-image: url("image/removebutton.png");
+            background-size: cover;
+        }
+
+        #app li .doneCheck {
+            width: 20px;
+            height: 20px;
+            float: right;
+            text-align: center;
+            cursor: pointer;
+            margin-top:5px ;
+        }
+
+        #app li:hover .remove{
+            display: block;
+        }
+
+        #app p {
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+        }
+
+        #app span {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            cursor: pointer;
+        }
+
+        #app button{
+        	width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            float: right;
+            text-align: center;
+            cursor: pointer;
+            background-image: url("image/addbutton.png");
+            background-size: cover;
+
+        }
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h2>To Do</h2>
+        <div class="add" >
+        <input class="textField"  v-model='interText' @keyup.enter='add()' placeholder="Пожалуйста, введите текст">
+
+        	<button class="addButton" @click="add()" ></button>
+        </div>
+        <ul>
+            <li v-for='(item,index) in list'>
+                {{index+1}}) {{ item }}
+                <div class="remove" @click="remove()">
+
+                </div>
+            </li>
+            <p>
+               Записей ({{ listLen }})
+            </p>
+            <span @click="removeall()">
+                                 Очистить все
+            </span>
+        </ul>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+</body>
+</html>
